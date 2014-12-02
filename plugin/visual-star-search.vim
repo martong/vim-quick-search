@@ -3,18 +3,14 @@
 let s:visual_star_search_ag_search_buf = ""
 
 " makes * and # work on visual mode too.
-function! s:VSetSearchAg(cmdtype)
+function! s:VSetSearchAg()
   let temp = @s
   norm! gv"sy
-  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-  let g:visual_star_search_ag_search_buf = '\Q' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g') . '\E'
+  let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+  let g:visual_star_search_ag_search_buf = '\Q' . substitute(escape(@s, '\'), '\n', '\\n', 'g') . '\E'
   let @s = temp
 endfunction
 
-"xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-"xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-
-" recursively ag for word under cursor or selection if you hit leader-star
-"nmap <leader>* :execute 'noautocmd vimgrep /\V' . substitute(escape(expand("<cword>"), '\'), '\n', '\\n', 'g') . '/ **'<CR>
-vmap <leader>a :<C-u>call <SID>VSetSearchAg('/')<CR>:execute 'noautocmd LAg! "' . g:visual_star_search_ag_search_buf . '"'<CR>
+map <Leader>a :let @/="<C-R><C-W>" \| LAg! "\b<C-R><C-W>\b"<cr>
+vmap <leader>a :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd LAg! "' . g:visual_star_search_ag_search_buf . '"'<CR>
 
