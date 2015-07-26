@@ -16,17 +16,18 @@ endfunction
 function! s:GetVisualSearch()
   let temp = @s
   norm! gv"sy
-  let subst = substitute(escape(@s, '\'), '\n', '\\n', 'g')
+  let ret = @s
   let @s = temp
-  return subst
+  return ret
 endfunction
 
 function! s:LiteralSearch(arg)
+  let escaped = substitute(escape(a:arg, '\'), '\n', '\\n', 'g')
   " Use the \V Literal Switch for Verbatim Searches in vim
-  let searchReg = '\V' . a:arg
+  let searchReg = '\V' . escaped
   " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
   " \Q and \E is not supported for ack.
-  let command = g:quickSearch_FindCommand . '--literal ' . '"' . a:arg . '"'
+  let command = g:quickSearch_FindCommand . '--literal ' . '"' . escaped . '"'
   call histadd("cmd", 'FL ' . a:arg)
   call s:Search(command, searchReg)
 endfunction
