@@ -11,6 +11,14 @@ function! s:VSetSearchAg()
   let @s = temp
 endfunction
 
-map <Leader>s :let @/="<C-R><C-W>" \| LAg! --cpp "\b<C-R><C-W>\b"<cr>
+function! FindCommand(arg)
+  let @/ = a:arg
+  execute 'LAg! --cpp "'.a:arg.'"'
+endfunction
+
+"map <Leader>s :let @/="<C-R><C-W>" \| LAg! --cpp "\b<C-R><C-W>\b"<cr>
+map <Leader>s :call FindCommand("<C-R><C-W>")<CR>
+command! -nargs=1 F call FindCommand(<q-args>)
+
 vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd LAg! --cpp "' . g:visual_star_search_ag_search_buf . '"'<CR>
 
