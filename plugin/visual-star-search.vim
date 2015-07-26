@@ -29,8 +29,10 @@ function! s:SearchAndSetReg(arg)
   execute g:vvsa_FindCommand.'"'.a:arg.'"'
 endfunction
 
-map <Leader>s :call s:SearchAndSetReg("<C-R><C-W>")<CR>
+" Shortcut for the global find command
 command! -nargs=1 F call s:SearchAndSetReg(<q-args>)
 
+" TODO make the key bindings customizable
+map <Leader>s :call <SID>SearchAndSetReg("<C-R><C-W>")<CR>
 vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:vvsa_FindCommand . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
 
