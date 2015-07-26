@@ -12,7 +12,5 @@ function! s:VSetSearchAg()
 endfunction
 
 map <Leader>s :let @/="<C-R><C-W>" \| LAg! --cpp "\b<C-R><C-W>\b"<cr>
-map <Leader>A :let @/="<C-R><C-W>" \| LAg! -t --skip-vcs-ignores "\b<C-R><C-W>\b"<cr>
 vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd LAg! --cpp "' . g:visual_star_search_ag_search_buf . '"'<CR>
-vmap <leader>A :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd LAg! -t --skip-vcs-ignores "' . g:visual_star_search_ag_search_buf . '"'<CR>
 
