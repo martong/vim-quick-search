@@ -35,6 +35,9 @@ This command forwards the argument to your favourite search command and sets the
 Since \v is used, you will have the same matches in the vim buffers what you have with your search engine.
 (Both ack and ag uses perl regexes, and \v is very close to that.)
 
+## Search history
+In all the three cases above, the search is pushed to the search history.
+
 ## Mappings
 This plugins provides you a default mapping `<leader>s`.
 You can change that with
