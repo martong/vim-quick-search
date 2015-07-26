@@ -15,12 +15,12 @@ let g:quickSearch_FindCommand = 'LAg! --cpp'
 ```
 
 ## Search in normal mode
-If you are standing on a word, hit <leader>s and your search command is executed
+If you are standing on a word, hit `<leader>s` and your search command is executed
 with that word.
 The search register is modified to contain the word.
 
 ## Search in visual mode
-Select something in visual mode and hit <leader>s and the search command is executed
+Select something in visual mode and hit `<leader>s` and the search command is executed
 with the *literal* content of the visual selection.
 The search register is modified to contain the *literal* visual selection,
 for that \V is used.
@@ -32,7 +32,7 @@ Since \v is used, you will have the same matches in the vim buffers what you hav
 (Both ack and ag uses perl regexes, and \v is very close to that.)
 
 ## Mappings
-This plugins provides you a default mapping '<leader>s'.
+This plugins provides you a default mapping `<leader>s`.
 You can change that with
 ```
 let g:quickSearch_UseDefaultMappings == 0
