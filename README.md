@@ -37,7 +37,7 @@ You can change that with
 ```
 let g:quickSearch_UseDefaultMappings == 0
 ```
-in your vimrc and define the mappings by copying them from the plugin's source code:
+in your vimrc and define the mappings by copying them from the plugin's source code. E.g.:
 ```
   map <Leader>QS :call <SID>NormalSearch("<C-R><C-W>")<CR>
   ...
