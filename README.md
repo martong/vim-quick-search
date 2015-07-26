@@ -1,5 +1,10 @@
 # QuickSearch
 QuickSearch provides you simple and very effective search in vim.
+The key here is that vim's search buffer is always synced with your Ag/Ack searches,
+and *literal* search mode is set intuitevely.
+In visual mode you want to searh literally.
+However when you search from the command line,
+you want to use normal regexes with special characters with their special meaning.
 You sould have vim Ack or Ag installed.
 
 ## Setup
