@@ -43,6 +43,6 @@ if g:quickSearch_UseDefaultMappings == 1
   map <Leader>s :call <SID>NormalSearch("<C-R><C-W>")<CR>
   " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
   " \Q and \E is not supported for ack.
-  vmap <leader>s :<C-u>call <SID>VisualSearch()<CR>:execute 'noautocmd ' . g:quickSearch_FindCommand . '--literal ' . '"' . g:quickSearch_VisualBuf . '"'<CR>
+  vmap <leader>s :<C-u>call <SID>VisualSearch()<CR>:execute g:quickSearch_FindCommand . '--literal ' . '"' . g:quickSearch_VisualBuf . '"'<CR>
 endif
 
