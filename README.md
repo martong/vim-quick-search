@@ -26,7 +26,7 @@ The search register is modified to contain the *literal* visual selection,
 for that \V is used.
 
 ## QuickSearch command
-The plugins provides you the :F command.
+The plugins provides you the :F command. (:S is occupied by tpope/vim-abolish Subvert.)
 This command forwards the argument to your favourite search command and sets the search register with \v.
 Since \v is used, you will have the same matches in the vim buffers what you have with your search engine.
 (Both ack and ag uses perl regexes, and \v is very close to that.)
