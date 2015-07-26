@@ -1,8 +1,11 @@
 " From http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
 
 if !has("g:vvsa_FindCommand")
-    let g:vvsa_FindCommand = 'LAg! --cpp '
+    let g:vvsa_FindCommand = 'LAg! --cpp'
 endif
+
+" Add extra whitespace
+let g:vvsa_FindCommand = g:vvsa_FindCommand.' '
 
 let s:visual_star_search_ag_search_buf = ""
 
