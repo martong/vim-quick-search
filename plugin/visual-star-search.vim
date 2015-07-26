@@ -16,6 +16,7 @@ function! s:VisualSearch()
   norm! gv"sy
   " Use the \V Literal Switch for Verbatim Searches in vim
   let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+  call histadd("search", @/)
   let g:quickSearch_VisualBuf = substitute(escape(@s, '\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
@@ -27,6 +28,7 @@ function! s:NormalSearch(arg)
   "The \v (very magic) pattern search is assigning a special meaning to every symbol except _, numbers, and letters.
   "That’s easily remembered and happens to be consistent with the rules for Perl’s regular expressions.
   let @/ = '\v'.a:arg
+  call histadd("search", @/)
   execute g:quickSearch_FindCommand.'"'.a:arg.'"'
 endfunction
 
