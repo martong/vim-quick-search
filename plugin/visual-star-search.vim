@@ -17,8 +17,7 @@ function! s:VSetSearchAg()
   norm! gv"sy
   " Use the \V Literal Switch for Verbatim Searches in vim
   let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
-  " Use \Q \E for perl regex verbatim searches
-  let g:visual_star_search_ag_search_buf = '\Q' . substitute(escape(@s, '\'), '\n', '\\n', 'g') . '\E'
+  let g:visual_star_search_ag_search_buf = substitute(escape(@s, '\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
 
@@ -37,5 +36,7 @@ command! -nargs=1 F call s:SearchAndSetReg(<q-args>)
 
 " TODO make the key bindings customizable
 map <Leader>s :call <SID>SearchAndSetReg("<C-R><C-W>")<CR>
-vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:vvsa_FindCommand . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
+" Use --literal for perl regex verbatim searches. Both ack and ag supports it.
+" \Q and \E is not supported for ack.
+vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:vvsa_FindCommand . '--literal ' . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
 
