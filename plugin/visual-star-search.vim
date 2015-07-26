@@ -19,6 +19,9 @@ function! s:VisualSearch()
   call histadd("search", @/)
   let g:quickSearch_VisualBuf = substitute(escape(@s, '\'), '\n', '\\n', 'g')
   let @s = temp
+  " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
+  " \Q and \E is not supported for ack.
+  execute g:quickSearch_FindCommand . '--literal ' . '"' . g:quickSearch_VisualBuf . '"'
 endfunction
 
 " Sets the search register and invokes the global favorite find command.
@@ -41,8 +44,6 @@ endif
 
 if g:quickSearch_UseDefaultMappings == 1
   map <Leader>s :call <SID>NormalSearch("<C-R><C-W>")<CR>
-  " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
-  " \Q and \E is not supported for ack.
-  vmap <leader>s :<C-u>call <SID>VisualSearch()<CR>:execute g:quickSearch_FindCommand . '--literal ' . '"' . g:quickSearch_VisualBuf . '"'<CR>
+  vmap <leader>s :<C-u>call <SID>VisualSearch()<CR>
 endif
 
