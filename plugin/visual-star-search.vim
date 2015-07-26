@@ -5,7 +5,7 @@ endif
 " Add extra whitespace
 let g:quickSearch_FindCommand = g:quickSearch_FindCommand.' '
 
-let s:visual_star_search_ag_search_buf = ""
+let s:quickSearch_VisualBuf = ""
 
 " Sets the search register and invokes the global favorite find command in
 " visual mode.
@@ -16,7 +16,7 @@ function! s:VisualSearch()
   norm! gv"sy
   " Use the \V Literal Switch for Verbatim Searches in vim
   let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
-  let g:visual_star_search_ag_search_buf = substitute(escape(@s, '\'), '\n', '\\n', 'g')
+  let g:quickSearch_VisualBuf = substitute(escape(@s, '\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
 
@@ -41,6 +41,6 @@ if g:quickSearch_UseDefaultMappings == 1
   map <Leader>s :call <SID>NormalSearch("<C-R><C-W>")<CR>
   " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
   " \Q and \E is not supported for ack.
-  vmap <leader>s :<C-u>call <SID>VisualSearch()<CR>:execute 'noautocmd ' . g:quickSearch_FindCommand . '--literal ' . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
+  vmap <leader>s :<C-u>call <SID>VisualSearch()<CR>:execute 'noautocmd ' . g:quickSearch_FindCommand . '--literal ' . '"' . g:quickSearch_VisualBuf . '"'<CR>
 endif
 
