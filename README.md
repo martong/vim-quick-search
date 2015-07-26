@@ -39,7 +39,7 @@ Since \v is used, you will have the same matches in the vim buffers what you hav
 This plugins provides you a default mapping `<leader>s`.
 You can change that with
 ```
-let g:quickSearch_UseDefaultMappings == 0
+let g:quickSearch_UseDefaultMappings = 0
 ```
 in your vimrc and define the mappings by copying them from the plugin's source code. E.g.:
 ```
