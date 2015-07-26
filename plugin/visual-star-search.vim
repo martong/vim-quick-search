@@ -1,6 +1,6 @@
 " From http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
 
-if !has("g:vvsa_FindCommand")
+if !exists("g:vvsa_FindCommand")
     let g:vvsa_FindCommand = 'LAg! --cpp'
 endif
 
