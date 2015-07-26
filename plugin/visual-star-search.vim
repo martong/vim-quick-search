@@ -34,9 +34,14 @@ endfunction
 " Shortcut for the global find command
 command! -nargs=1 F call s:SearchAndSetReg(<q-args>)
 
-" TODO make the key bindings customizable
-map <Leader>s :call <SID>SearchAndSetReg("<C-R><C-W>")<CR>
-" Use --literal for perl regex verbatim searches. Both ack and ag supports it.
-" \Q and \E is not supported for ack.
-vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:vvsa_FindCommand . '--literal ' . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
+if !has("g:vvsa_UseDefaultMappings")
+    let g:vvsa_UseDefaultMappings = 1
+endif
+
+if g:vvsa_UseDefaultMappings == 1
+  map <Leader>s :call <SID>SearchAndSetReg("<C-R><C-W>")<CR>
+  " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
+  " \Q and \E is not supported for ack.
+  vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:vvsa_FindCommand . '--literal ' . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
+endif
 
