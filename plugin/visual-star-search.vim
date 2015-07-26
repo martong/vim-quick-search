@@ -1,11 +1,11 @@
 " From http://got-ravings.blogspot.com/2008/07/vim-pr0n-visual-search-mappings.html
 
-if !exists("g:vvsa_FindCommand")
-    let g:vvsa_FindCommand = 'LAg! --cpp'
+if !exists("g:quickSearch_FindCommand")
+    let g:quickSearch_FindCommand = 'LAg! --cpp'
 endif
 
 " Add extra whitespace
-let g:vvsa_FindCommand = g:vvsa_FindCommand.' '
+let g:quickSearch_FindCommand = g:quickSearch_FindCommand.' '
 
 let s:visual_star_search_ag_search_buf = ""
 
@@ -28,20 +28,20 @@ function! s:SearchAndSetReg(arg)
   "The \v (very magic) pattern search is assigning a special meaning to every symbol except _, numbers, and letters.
   "That’s easily remembered and happens to be consistent with the rules for Perl’s regular expressions.
   let @/ = '\v'.a:arg
-  execute g:vvsa_FindCommand.'"'.a:arg.'"'
+  execute g:quickSearch_FindCommand.'"'.a:arg.'"'
 endfunction
 
 " Shortcut for the global find command
 command! -nargs=1 F call s:SearchAndSetReg(<q-args>)
 
-if !has("g:vvsa_UseDefaultMappings")
-    let g:vvsa_UseDefaultMappings = 1
+if !has("g:quickSearch_UseDefaultMappings")
+    let g:quickSearch_UseDefaultMappings = 1
 endif
 
-if g:vvsa_UseDefaultMappings == 1
+if g:quickSearch_UseDefaultMappings == 1
   map <Leader>s :call <SID>SearchAndSetReg("<C-R><C-W>")<CR>
   " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
   " \Q and \E is not supported for ack.
-  vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:vvsa_FindCommand . '--literal ' . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
+  vmap <leader>s :<C-u>call <SID>VSetSearchAg()<CR>:execute 'noautocmd ' . g:quickSearch_FindCommand . '--literal ' . '"' . g:visual_star_search_ag_search_buf . '"'<CR>
 endif
 
