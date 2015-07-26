@@ -49,3 +49,8 @@ in your vimrc and define the mappings by copying them from the plugin's source c
   map <Leader>QS :call <SID>NormalSearch("<C-R><C-W>")<CR>
   ...
 ```
+
+## Known bugs / TODOs
+- Multiline visual selections will not work now. Unfortunately it is not easy to support this with ag. Search register will be set though.
+- Visual selection with '\' will not work. TODO: Escaping should be handled differently when the arg passed to ag. Search register will be set though.
+
