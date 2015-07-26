@@ -6,6 +6,7 @@ In visual mode you want to searh literally.
 However when you search from the command line,
 you want to use normal regexes with special characters with their special meaning.
 You sould have vim Ack or Ag installed.
+It is also recommended to install nelstrom/vim-visual-star-search.
 
 ## Setup
 Set up you favourite search command. E.g.:
