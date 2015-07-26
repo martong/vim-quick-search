@@ -13,6 +13,10 @@ Set up you favourite search command. E.g.:
 ```
 let g:quickSearch_FindCommand = 'LAg! --cpp'
 ```
+or
+```
+let g:quickSearch_FindCommand = 'LAck! --cpp --smart-case'
+```
 
 ## Search in normal mode
 If you are standing on a word, hit `<leader>s` and your search command is executed
