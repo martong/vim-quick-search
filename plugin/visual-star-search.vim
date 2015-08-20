@@ -22,7 +22,7 @@ function! s:GetVisualSearch()
 endfunction
 
 function! s:LiteralSearch(arg)
-  let escaped = substitute(escape(a:arg, '\'), '\n', '\\n', 'g')
+  let escaped = substitute(escape(escape(a:arg, '\'), '"'), '\n', '\\n', 'g')
   " Use the \V Literal Switch for Verbatim Searches in vim
   let searchReg = '\V' . escaped
   " Use --literal for perl regex verbatim searches. Both ack and ag supports it.
