@@ -53,6 +53,6 @@ in your vimrc and define the mappings by copying them from the plugin's source c
   ...
 ```
 
-## Known bugs / TODOs
-- Multiline visual selections will not work now. Unfortunately it is not easy to support this with ag. Search register will be set though.
+## Known limitations / TODOs
+- Multiline visual selections are not supported. Unfortunately it is not easy to support this with `ag`. Search register will be set though.
 
