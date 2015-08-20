@@ -45,7 +45,10 @@ function! s:NormalSearch(arg)
   "The \v (very magic) pattern search is assigning a special meaning to every symbol except _, numbers, and letters.
   "That’s easily remembered and happens to be consistent with the rules for Perl’s regular expressions.
   let searchReg = '\v'.a:arg
-  let command = g:quickSearch_FindCommand.'"'.a:arg.'"'
+  " Since we sorround the expression with double quotes, we need to escape it
+  " from the pattern
+  let escaped = escape(a:arg, '"')
+  let command = g:quickSearch_FindCommand.'"'.escaped.'"'
   call histadd("cmd", 'F ' . a:arg)
   call s:Search(command, searchReg)
 endfunction
