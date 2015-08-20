@@ -1,5 +1,5 @@
 if !exists("g:quickSearch_FindCommand")
-    let g:quickSearch_FindCommand = 'LAg! --cpp'
+    let g:quickSearch_FindCommand = 'LAg! '
 endif
 
 " Add extra whitespace
